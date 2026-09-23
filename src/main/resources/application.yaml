@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: RedisStudy
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      # 如果有密码
+      password: 123
+      # 数据库索引=
+      database: 0
+      # 连接超时
+      connect-timeout: 2000ms
+      # 客户端名称
+      client-name: sms-login-app
+      # Lettuce 连接池配置
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: 100ms
+  datasource:
+    url: jdbc:mysql://localhost:3306/RedisData?allowPublicKeyRetrieval=true&useSSL=false
+    username: msl
+    password: mysql123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: RedisMQ
+    username: admin
+    password: admin123
+    # 开启生产者确认机制（防止消息丢失）
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      # publisher-returns 生效前提：路由失败时把消息退回给生产者
+      mandatory: true
+    # 开启消费者手动ACK（防止业务没有处理完消息就丢了）
+    listener:
+      simple:
+        acknowledge-mode: MANUAL
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 下划线转驼峰（默认即为 true，此处显式声明）
+    map-underscore-to-camel-case: true
