@@ -62,6 +62,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     }
 
     @Permission("USER")
+    @Log("创建优惠券订单")
     @Override
     public void createCouponOrder(CouponGrabDTO couponGrabDTO) throws InterruptedException {
         // 服务器端逻辑
@@ -116,9 +117,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
         // lua脚本逻辑
         String path = "seckill.lua";
+        // 已购用户集合 key 必须用 couponId 拼装（与 seckill.lua 的 KEYS[2]、消费者补偿逻辑一致），否则会跨券误拦截
         List<String> keys = Arrays.asList(
                 RedisPrefix.seckillStockKey(couponId),
-                RedisPrefix.seckillUserKey(userId)
+                RedisPrefix.seckillUserKey(couponId)
         );
 
         Object[] args = new Object[]{String.valueOf(userId)};
