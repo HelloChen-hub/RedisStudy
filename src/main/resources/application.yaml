@@ -21,7 +21,7 @@ spring:
           min-idle: 0
           max-wait: 100ms
   datasource:
-    url: jdbc:mysql://localhost:3306/RedisData?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/RedisData?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     username: msl
     password: mysql123
     driver-class-name: com.mysql.cj.jdbc.Driver

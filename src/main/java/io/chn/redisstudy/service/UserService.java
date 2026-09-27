@@ -6,9 +6,13 @@ import io.chn.redisstudy.entity.User;
 import io.chn.redisstudy.po.UserVO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface UserService extends IService<User> {
     LoginUser login(UserVO userVO);
 
     UserVO getUserById(Long id);
+
+    List<User> listAll();
 }
