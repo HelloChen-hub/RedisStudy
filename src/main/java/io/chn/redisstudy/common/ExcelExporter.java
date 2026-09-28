@@ -13,11 +13,10 @@ import java.util.List;
 public class ExcelExporter {
 
     public <T> void exportExcel(HttpServletResponse response, List<T> data, Class<T> clazz, String fileName, String sheetName) throws IOException {
-        // TODO 方法名前的泛型与方法名后的泛型有啥区别
         // 设置响应头
         setResponseHeader(response, fileName);
         // 写Excel
-        EasyExcel.write(response.getOutputStream(), clazz).sheet(sheetName).doWrite(data);
+        EasExcel.write(response.getOutputStream(), clazz).sheet(sheetName).doWrite(data);
     }
 
     private void setResponseHeader(HttpServletResponse response, String fileName) {
