@@ -1,7 +1,6 @@
 package io.chn.redisstudy.common;
 
 import jakarta.servlet.http.HttpServletResponse;
-import com.alibaba.excel.EasyExcel;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class ExcelExporter {
         // 设置响应头
         setResponseHeader(response, fileName);
         // 写Excel
-        EasExcel.write(response.getOutputStream(), clazz).sheet(sheetName).doWrite(data);
+       // EasExcel.write(response.getOutputStream(), clazz).sheet(sheetName).doWrite(data);
     }
 
     private void setResponseHeader(HttpServletResponse response, String fileName) {
