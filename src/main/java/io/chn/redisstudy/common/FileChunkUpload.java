@@ -61,7 +61,7 @@ public class FileChunkUpload {
         File targetFile = new File(target);
         FileUtil.mkParentDirs(targetFile);
 
-        // 合并操作
+        // 合并
         try (RandomAccessFile raf = new RandomAccessFile(targetFile, "rw");
              // 获取目标文件的文件通道
              FileChannel targetChannel = raf.getChannel()) {
