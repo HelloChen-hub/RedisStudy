@@ -13,7 +13,7 @@ import java.nio.file.StandardOpenOption;
 public class FileChunkUpload {
 
     private long totalChunks;
-    private static final long CHUNK_SIZE = 10 * 1024 * 1024;
+    private static final long CHUNK_SIZE = 100 * 1024 * 1024;
 
     // 文件分片
     public void fileChunkUpload(String resource, String uploadDir) throws IOException {
